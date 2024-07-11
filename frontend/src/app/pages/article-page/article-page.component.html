@@ -1,0 +1,28 @@
+<div class="w-full min-h-[100vh] flex justify-center">
+  @if (article) {
+  <div class="text-center w-4/5 mt-32">
+    <div class="font-sans text-base text-left">
+      @if (article.authorId === -1) {
+      <span>Author: default</span>
+      <span class="block">{{article.creationDate| date:'yyyy/MM/dd, hh:mm'}}</span>
+      } @else {
+      <div class="flex">
+        <img [src]="article.author.imageUrl" alt="avatar" class="rounded-full w-12 mr-2">
+        <div>
+          <span>Author: {{article.author.username}}</span>
+          <span class="block">{{article.creationDate | date:'yyyy/MM/dd, hh:mm'}}</span>
+        </div>
+      </div>
+      }
+    </div>
+    <br><br>
+
+    <p class="font-medium font-sans text-xl md:text-2xl text-justify">{{article.title}}</p>
+    <p class="pt-1 text-gray-700 font-sans font-normal text-base md:text-lg text-justify">{{article.subtitle}}</p>
+    <mat-divider class="py-5"></mat-divider>
+
+    <div class="text-justify w-full text-sm md:text-base" [innerHTML]="article.description">
+    </div>
+  </div>
+  }
+</div>

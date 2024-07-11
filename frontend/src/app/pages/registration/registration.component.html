@@ -1,0 +1,56 @@
+<div
+  class="w-full min-h-[100vh] flex items-center justify-center md:bg-gradient-to-br md:from-blue-900 md:to-blue-950 bg-slate-200 transition duration-1000">
+  <div class="bg-slate-200 p-10 rounded-md w-full md:w-2/4 lg:w-1/4 md:shadow-md">
+    <p class="text-center text-2xl font-sans font-normal pb-5">Sign Up</p>
+    <form class="w-full" [formGroup]="authForm" (submit)="authSubmit()">
+      @if (error) {
+      <mat-error>{{error}}</mat-error>
+      }
+
+      <label class="text-sm">Username</label>
+      <mat-form-field class="w-full mb-2">
+        <mat-label>Username</mat-label>
+        <input type="text" name="username" matInput [formControl]="usernameFormControl" placeholder="Ex. username">
+        @if (usernameFormControl.hasError('minLength') && !usernameFormControl.hasError('required')) {
+        <mat-error>Please enter a valid username.</mat-error>
+        }
+        @if (usernameFormControl.hasError('required')) {
+        <mat-error>The username field is <strong>required</strong>.</mat-error>
+        }
+      </mat-form-field>
+
+      <label class="text-sm">Email</label>
+      <mat-form-field class="w-full mb-2">
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email.</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>The email field is <strong>required</strong>.</mat-error>
+        }
+      </mat-form-field>
+
+      <label class="text-sm">Password</label>
+      <mat-form-field class="w-full">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="passwordFormControl" placeholder="Ex. a!wd32@4dDg%"
+          name="password">
+        @if (passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required')) {
+        <mat-error>The password must have at least <strong>6</strong> chars.</mat-error>
+        }
+        @if (passwordFormControl.hasError('required')) {
+        <mat-error>The password field is <strong>required</strong>.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="flex justify-center mt-5">
+        <button [disabled]="!authForm.valid" mat-flat-button color="primary" type="submit"
+          style="padding-left: 15%; padding-right: 15%;">Sign Up</button>
+      </div>
+    </form>
+    <div class="my-5"><mat-divider></mat-divider></div>
+    <p class="text-center">Already have an account? <a routerLink="/login"
+        class="text-red-600 hover:text-black hover:underline duration-150 ease-out">Log In</a></p>
+  </div>
+</div>

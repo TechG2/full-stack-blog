@@ -1,0 +1,11 @@
+<div
+  class="absolute bg-slate-100 w-[300px] bottom-2 right-0 shadow-lg text-left px-5 py-3 duration-300 ease-in-out translate-x-full"
+  #noteDiv>
+  <div class="flex items-center w-full gap-3 text-center">
+    <fa-icon [icon]="note.isError ? circleXMark : circleCheck"
+      [ngClass]="{'text-red-600': note.isError, 'text-green-600': !note.isError}" class="text-4xl"></fa-icon>
+    <div class="flex items-center justify-center relative top-[5px]">
+      <p class="text-sm text-gray-500 text-left">{{note.msg}}</p>
+    </div>
+  </div>
+</div>

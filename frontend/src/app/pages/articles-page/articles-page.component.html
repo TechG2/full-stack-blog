@@ -1,0 +1,14 @@
+<div class="w-full min-h-[100vh] flex justify-center">
+  <div class="mt-[10em] text-center w-4/5">
+    @if (isAuthenticated) {
+    <button mat-flat-button color="primary" type="button" class="float-right" routerLink="/create">Create</button>
+    }
+    <p class="font-medium font-sans text-2xl">Articles</p>
+    <hr>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 p-10">
+      @for (article of articles; track $index) {
+      <app-article-card [article]="article"></app-article-card>
+      }
+    </div>
+  </div>
+</div>

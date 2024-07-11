@@ -1,0 +1,21 @@
+<div class="px-10 py-5 w-full bg-slate-200 shadow-lg">
+  <div class="md:justify-between md:flex">
+    <div class="px-5 flex justify-between md:justify-normal">
+      <div class="block pr-20 ">
+        <p class="text-2xl font-medium font-serif">Menu</p>
+        @for (item of menuItems; track $index) {
+        <p class="text-lg font-serif"><a [routerLink]="item.url">{{item.name}}</a></p>
+        }
+      </div>
+      <div class="block pr-20">
+        <p class="text-2xl font-medium font-serif">Account</p>
+        <p class="text-lg font-serif"><a>Profile</a></p>
+        <p class="text-lg font-serif"><a routerLink="/login">Log In</a></p>
+        <p class="text-lg font-serif"><a routerLink="/register">Sign Up</a></p>
+      </div>
+    </div>
+    <div class="px-5 pt-5 block text-right md:text-left md:flex md:items-end">
+      <p>Developed by TechG.</p>
+    </div>
+  </div>
+</div>

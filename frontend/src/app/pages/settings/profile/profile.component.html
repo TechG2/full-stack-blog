@@ -1,0 +1,41 @@
+<div class="py-3">
+  <form method="post" [formGroup]="formGroup" class="max-w-[350px]">
+    <div
+      class="relative h-[100px] w-[100px] m-auto rounded-[50%] overflow-hidden shadow-custom-avatar transition-transform duration-300 hover:scale-105 cursor-pointer">
+      <img #profilePic
+        class="w-full h-full transition-opacity duration-300 after:font-font-awesome after:content-['\f007'] after:top-0 after:left-0 after:w-full after:h-full after:absolute after:text-[100px] after:bg-[#ecf0f1] after:color-[#34495e] after:text-center"
+        [src]="user?.imageUrl" [alt]="user?.username" />
+
+      <div class="absolute top-0 left-0 w-full h-full" id="uploadButton" (click)="fileUpload.click()">
+        <fa-icon [icon]="faArrowCircleUp"
+          class="absolute text-[100px] top-0 left-0 opacity-0 transition-opacity duration-300 text-[#34495e]"
+          id="uploadButtonArrow"></fa-icon>
+      </div>
+
+      <input #fileUpload (change)="readUrl(fileUpload)" class="hidden" type="file" accept="image/*"
+        formControlName="imageUrl" />
+    </div>
+    <mat-divider class="py-3 invisible"></mat-divider>
+
+    <div>
+      <mat-label class="text-base">Username</mat-label>
+      <mat-form-field class="w-full">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Ex. testUsername" [value]="user?.username" formControlName="username">
+      </mat-form-field>
+    </div>
+    <mat-divider class="py-3"></mat-divider>
+
+    <div>
+      <mat-label class="text-base">Email</mat-label>
+      <mat-form-field class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Ex. email" [value]="user?.email" formControlName="email">
+      </mat-form-field>
+    </div>
+    <mat-divider class="py-3 invisible"></mat-divider>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!formGroup.valid"
+      (click)="handleSave()">Save</button>
+  </form>
+</div>

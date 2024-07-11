@@ -1,0 +1,22 @@
+<div class="bg-slate-200 rounded-md md:h-[30em] relative">
+  <div class="px-4 pt-4 pb-1 font-sans font-normal text-xl">{{article.title.length > 25 ? article.title.slice(0, 25-1) +
+    '&hellip;' : article.title}}</div>
+  <mat-divider></mat-divider>
+  <div class="px-4 pb-2 pt-1 text-gray-700 font-sans font-normal text-sm">{{article.subtitle.length > 25 ?
+    article.subtitle.slice(0, 25-1) +
+    '&hellip;' : article.subtitle}}</div>
+  <mat-divider></mat-divider>
+  <div class="w-full flex items-center justify-center">
+    <div class="w-96 h-40 overflow-hidden flex justify-center bg-black bg-opacity-50">
+      <img [src]="article.imageUrl" [alt]="article.title">
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="p-4 w-full text-justify block overflow-clip"
+    [innerHTML]="article.description.length > 150 ? article.description.slice(0, 150-1) + '&hellip;' : article.description">
+  </div>
+
+  <div class="absolute bottom-5 left-5">
+    <button mat-flat-button color="primary" routerLink="/article/{{article.id}}">Leggi</button>
+  </div>
+</div>

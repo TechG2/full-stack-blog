@@ -1,0 +1,19 @@
+<div class="w-full min-h-[100vh] flex justify-center mt-32">
+  <div class=" text-center w-4/5 flex">
+    <div class="py-10 pl-10 text-left z-10">
+      <p class="text-lg pl-1 pr-5">Settings</p>
+      <mat-divider></mat-divider>
+      <div class="block">
+        <a class="{{currentUrl === '/settings/profile' ? 'opacity-100' : 'opacity-50'}} block pl-1 py-2 text-base duration-150 ease-out hover:opacity-100 hover:underline"
+          routerLink="profile">Profile</a>
+        <a class="{{currentUrl === '/settings/security' ? 'opacity-100' : 'opacity-50'}} block pl-1 py-2 text-base duration-150 ease-out hover:opacity-100 hover:underline"
+          routerLink="security">Security</a>
+      </div>
+    </div>
+    <div class="border-slate-200 border-solid border-l-[1px] h-3/4 mx-5"></div>
+
+    <div class="w-full h-3/4 text-left overflow-x-hidden overflow-y-scroll">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

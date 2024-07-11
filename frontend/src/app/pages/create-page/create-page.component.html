@@ -1,0 +1,31 @@
+<div class="w-full min-h-[100vh] flex justify-center">
+  <div class="mt-[10em] text-center w-4/5">
+    <p class="font-medium font-sans text-2xl">Create an Article</p>
+    <hr>
+
+    <form class="my-5" [formGroup]="articleForm">
+      <mat-form-field class="w-[90%]">
+        <mat-label>Url Image</mat-label>
+        <input matInput placeholder="Ex. Article url..." formControlName="imageUrl">
+      </mat-form-field>
+      <mat-form-field class="w-[90%]">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Ex. Article title..." formControlName="title">
+      </mat-form-field>
+      <mat-form-field class="w-[90%]">
+        <mat-label>Sub-title</mat-label>
+        <input matInput placeholder="Ex. Article subtitle..." formControlName="subtitle">
+      </mat-form-field>
+      <mat-form-field class="w-[90%]">
+        <mat-label>Content</mat-label>
+        <textarea matInput class="w-full" rows="25" placeholder="Ex. Article text..."
+          formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div class="w-[95%] mb-6">
+        <button mat-flat-button color="primary" type="submit" class="float-right" [disabled]="!articleForm.valid"
+          (click)="handleCreate()">Create</button>
+      </div>
+    </form>
+  </div>
+</div>

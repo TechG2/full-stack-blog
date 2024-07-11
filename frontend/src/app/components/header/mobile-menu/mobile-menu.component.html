@@ -1,0 +1,26 @@
+<div [ngClass]="{'translate-x-full': !isMobile}"
+  class="fixed z-20 bg-slate-200 right-0 w-full h-full duration-100 ease-in block shadow-xl md:hidden text-black">
+  <div id="hamburger" (click)="handleHamClick(hamInput)" class="justify-center flex w-full mb-5">
+    <div class="p-5 bg-red-400 justify-center flex">
+      <div class="h-7 w-10 top-4 left-5 flex flex-col justify-between cursor-pointer z-50 shadow-xl rounded-md">
+        <input type="checkbox" #hamInput class="hidden">
+        <span #hamLine1
+          class="block h-1 w-full rounded-lg bg-black origin-ham-line-0 duration-100 ease-in rotate-45"></span>
+        <span #hamLine2 class="block h-1 w-full rounded-lg bg-black duration-100 ease-in scale-0"></span>
+        <span #hamLine3
+          class="block h-1 w-full rounded-lg bg-black origin-ham-line-100 duration-100 ease-in -rotate-45"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex float-left w-full">
+    <ul id="navigator" class="float-left text-xl block w-full" (click)="handleMobileClose()">
+      @for (item of menuItems; track $index) {
+      <a class="{{currentUrl === item.url ? 'opacity-100': 'opacity-50'}} hover:opacity-100 hover:underline ease-in duration-100 w-full {{0 !== $index && 'p-2'}}"
+        [routerLink]="item.url">
+        <li class="px-5">{{item.name}}</li>
+      </a>
+      }
+    </ul>
+  </div>
+</div>

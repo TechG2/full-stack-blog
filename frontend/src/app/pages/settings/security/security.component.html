@@ -1,0 +1,60 @@
+<div class="py-3">
+  <form method="post" [formGroup]="passwordGroup" class="max-w-[350px]">
+    <mat-divider class="py-3 invisible"></mat-divider>
+
+    <p class="text-2xl">Reset Password</p>
+    <mat-divider class="py-3"></mat-divider>
+
+    <div>
+      <mat-label class="text-base">Current Password</mat-label>
+      <mat-form-field>
+        <mat-label>Current Password</mat-label>
+        <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="currentPassword">
+        <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="flex gap-5">
+      <div>
+        <mat-label class="text-base">New Password</mat-label>
+        <mat-form-field>
+          <mat-label>New Password</mat-label>
+          <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="newPassword">
+          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide2">
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-label class="text-base">Confirm Password</mat-label>
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hide3 ? 'password' : 'text'" formControlName="confirmPassword">
+          <button mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide3">
+            <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!passwordGroup.valid"
+      (click)="handleSave()">Change Password</button>
+  </form>
+
+  <form [formGroup]="twoFAGroup">
+    <mat-divider class="py-3 invisible"></mat-divider>
+
+    <p class="text-2xl">2FA</p>
+    <mat-divider class="py-3"></mat-divider>
+    <div class="mb-2">
+      <mat-label class="text-base">{{user?.TwoFA ? "Disable 2fa" : "Enable 2fa"}}</mat-label>
+      <p><mat-checkbox formControlName="twoFA">2FA</mat-checkbox></p>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="!twoFAGroup.valid"
+      (click)="handleTwoFA()">Save</button>
+  </form>
+</div>
